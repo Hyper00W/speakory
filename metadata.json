@@ -1,0 +1,6 @@
+{
+  "name": "Speakory",
+  "description": "Speakory helps children and teenagers build confidence through communication, public speaking, presentation and real-world speaking practice.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,140 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --font-serif: 'Playfair Display', Georgia, serif;
+    --color-lavender-bg: #EBE8FA;
+    --color-canvas: #FFFFFF;
+    --color-surface-soft: #F8F6FE;
+    --color-dark: #171717;
+    --color-muted: #6B6964;
+    --color-pastel-lime: #D4F0B0;
+    --color-pastel-blue: #C8E5FF;
+    --color-pastel-pink: #FDC5E3;
+    --color-pastel-lavender: #E5DEFF;
+    --color-speakory-violet: #7357FF;
+  }
+
+  body {
+    background-color: var(--color-lavender-bg);
+    color: var(--color-dark);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+}
+
+/* Serif italic accent class matching reference "Kids Academy" */
+.font-editorial-italic {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+}
+
+/* Pastel tag chips like in reference (#ARTWORK, #WRITING, etc.) */
+.tag-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  box-shadow: 0 4px 14px -3px rgba(0, 0, 0, 0.08);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tag-chip:hover {
+  transform: translateY(-2px) scale(1.05);
+}
+
+/* Dialogue speech bubbles for the thoughts */
+.dialogue-bubble-light {
+  position: relative;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(115, 87, 255, 0.15);
+  box-shadow: 0 10px 25px -4px rgba(115, 87, 255, 0.12), 0 4px 10px rgba(0, 0, 0, 0.04);
+  border-radius: 18px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dialogue-bubble-light:hover {
+  border-color: rgba(115, 87, 255, 0.4);
+  box-shadow: 0 14px 30px -4px rgba(115, 87, 255, 0.22);
+  transform: translateY(-4px) scale(1.05);
+}
+
+.bubble-tail-light-left::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 18px;
+  width: 12px;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.92);
+  border-right: 1px solid rgba(115, 87, 255, 0.15);
+  border-bottom: 1px solid rgba(115, 87, 255, 0.15);
+  transform: rotate(45deg);
+}
+
+.bubble-tail-light-right::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  right: 18px;
+  width: 12px;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.92);
+  border-right: 1px solid rgba(115, 87, 255, 0.15);
+  border-bottom: 1px solid rgba(115, 87, 255, 0.15);
+  transform: rotate(45deg);
+}
+
+/* Continuous float animations */
+@keyframes floatSmooth {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(1.5deg);
+  }
+}
+
+@keyframes floatReverse {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(12px) rotate(-1.5deg);
+  }
+}
+
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-8px) scale(1.02);
+  }
+}
+
+.animate-float-smooth {
+  animation: floatSmooth 6s ease-in-out infinite;
+}
+
+.animate-float-reverse {
+  animation: floatReverse 7s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: floatSlow 8s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
